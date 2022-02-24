@@ -31,3 +31,20 @@
     color: #ffffff;
     background-color: #03670b;
 }
+
+.firmasButton{
+    text-decoration: none;
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #a00741;
+    border-radius: 6px;
+    border: 2px solid #7d0834;
+}
+.firmasButton:hover{
+    color: #ffffff;
+    background-color: #7d0834;
+}

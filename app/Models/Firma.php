@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class TipoProducto
+ * Class Firma
  * 
  * @property int $id
  * @property string|null $nombre
@@ -22,9 +22,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Models
  */
-class TipoProducto extends Model
+class Firma extends Model
 {
-	protected $table = 'tipo_producto';
+	protected $table = 'firmas';
 
 	protected $fillable = [
 		'nombre'
@@ -32,6 +32,6 @@ class TipoProducto extends Model
 
 	public function productos()
 	{
-		return $this->hasMany(Producto::class, 'id_tipo_producto');
+		return $this->hasMany(Producto::class, 'id_firma');
 	}
 }
