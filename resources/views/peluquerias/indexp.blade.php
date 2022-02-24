@@ -23,11 +23,11 @@
                         <tr class="text-info">
                             <th scope="col" class="text-center"><b>Modificar/Eliminar</b></th>
                             <th scope="col" class="text-center"><b>Nombre</b></th>
-                            @if(isset($all) && !$all)
+                            @if(!isset($all))
                                 <th scope="col" class="text-center"><b>Dirección</b></th>
                             @endif
                             <th scope="col" class="text-center"><b>Telefono</b></th>
-                            @if(isset($all) && !$all)
+                            @if(isset($all) && $all)
                                 <th scope="col" class="text-center"><b>Población</b></th>
                             @endif
                         </tr>
@@ -52,12 +52,12 @@
                                 <td>
                                     <a href="{{ route('peluquerias.show', $peluqueria->id) }}">{{$peluqueria->nombre}}</a>
                                 </td>
-                                @if(isset($all) && !$all)
+                                @if(!isset($all))
                                 <td>{{$peluqueria->direccion}}</td>
                                 @endif
                                 <td>{{$peluqueria->telefono}}</td>
-                                @if(isset($all) && !$all)
-                                    <td>{{$peluqueria->id_municipio}}</td>
+                                @if(isset($all) && $all)
+                                    <td>{{$peluqueria->municipio->nombre}}</td>
                                 @endif
                             </tr>
                         @endforeach

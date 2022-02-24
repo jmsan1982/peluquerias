@@ -48,3 +48,20 @@
     color: #ffffff;
     background-color: #7d0834;
 }
+
+.firmasListButton{
+    text-decoration: none;
+    width: 150px;
+    height: 75px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #b0600b;
+    border-radius: 6px;
+    border: 2px solid #8f4f0a;
+}
+.firmasListButton:hover{
+    color: #ffffff;
+    background-color: #8f4f0a;
+}

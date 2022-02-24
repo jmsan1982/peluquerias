@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class ProductosController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +50,11 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        //
+        $productos = Producto::where('id_firma', $id)->get();
+
+        return view('productos.indexpr', [
+            'productos' => $productos
+        ]);
     }
 
     /**

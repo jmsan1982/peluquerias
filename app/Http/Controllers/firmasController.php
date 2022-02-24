@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Firma;
 use Illuminate\Http\Request;
 
 class firmasController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,11 @@ class firmasController extends Controller
      */
     public function index()
     {
-        //
+        $firmas = Firma::all();
+
+        return view('firmas.indexf', [
+           'firmas' => $firmas
+        ]);
     }
 
     /**
