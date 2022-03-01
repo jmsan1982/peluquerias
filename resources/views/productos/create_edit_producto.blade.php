@@ -39,7 +39,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="municipio"
+                                    <label for="firma"
                                            class="col-md-4 col-form-label text-md-right">Firma</label>
 
                                     <div class="col-md-6">
@@ -50,7 +50,7 @@
                                             @foreach($firmas as $firma)
                                                 <option value="{{$firma->id}}"
                                                         @if(isset($producto) &&
-                                                $firma->id === $firma->id) selected @endif>{{$firma->nombre}}</option>
+                                                $firma->id === $producto->id) selected @endif>{{$firma->nombre}}</option>
                                             @endforeach
                                         </select>
                                         @error('firma')
@@ -95,7 +95,7 @@
                                     <label for="precio" class="col-md-4 col-form-label text-md-right">Precio</label>
 
                                     <div class="col-md-6">
-                                        <input id="precio" type="text"
+                                        <input id="precio" type="number"
                                                class="form-control @error('precio') is-invalid @enderror"
                                                name="precio" autocomplete="direccion"
                                                value="{{ isset($producto->precio) ? $producto->precio : ''}}">

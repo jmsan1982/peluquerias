@@ -30,7 +30,13 @@ class ProductosController extends Controller
      */
     public function create()
     {
-        //
+        $peluquerias = Peluqueria::all();
+        $firmas = Firma::all();
+
+        return view('productos.create_edit_producto', [
+            'peluquerias' => $peluquerias,
+            'firmas' => $firmas
+        ]);
     }
 
     /**
@@ -41,7 +47,34 @@ class ProductosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validate = $this->validate($request,[
+            'nombre_producto' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'],
+            'precio' => ['required', 'integer']
+            /*'telefono' => ['required'],
+            'observaciones' => ['string'],
+            'numero_visitas' => ['integer'],
+            'total_vendido' => ['integer'],
+            'total_cobrado' => ['integer']*/
+        ]);
+
+        $producto = new Producto();
+
+        $producto->id_peluqueria = $request->input('peluqueria');
+        $producto->id_firma = $request->input('firma');
+        $producto->nombre = $request->input('nombre_producto');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio = $request->input('precio');
+        /* $producto->observaciones = $request->input('observaciones');
+         $producto->n_visitas = $request->input('numero_visitas');
+         $producto->total_vendido = $request->input('total_vendido');
+         $producto->total_cobrado = $request->input('total_cobrado');*/
+
+        $producto->save();
+
+        return redirect()->back()->with([
+            'message' => 'Producto añadido correctamente'
+        ]);
     }
 
     /**
@@ -70,13 +103,13 @@ class ProductosController extends Controller
     {
         $producto = Producto::find($id);
 
-        $peluquerias = Peluqueria::all();
+        $productos = Peluqueria::all();
 
         $firmas = Firma::all();
 
         return view('productos.create_edit_producto', [
             'producto' => $producto,
-            'peluquerias' => $peluquerias,
+            'peluquerias' => $productos,
             'firmas' => $firmas
         ]);
     }
@@ -90,7 +123,34 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validate = $this->validate($request,[
+            'nombre_producto' => ['required', 'string', 'max:255'],
+            'descripcion' => ['required', 'string', 'max:255'],
+            'precio' => ['required', 'integer']
+            /*'telefono' => ['required'],
+            'observaciones' => ['string'],
+            'numero_visitas' => ['integer'],
+            'total_vendido' => ['integer'],
+            'total_cobrado' => ['integer']*/
+        ]);
+
+        $producto = Producto::find($id);
+
+        $producto->id_peluqueria = $request->input('peluqueria');
+        $producto->id_firma = $request->input('firma');
+        $producto->nombre = $request->input('nombre_producto');
+        $producto->descripcion = $request->input('descripcion');
+        $producto->precio = $request->input('precio');
+       /* $producto->observaciones = $request->input('observaciones');
+        $producto->n_visitas = $request->input('numero_visitas');
+        $producto->total_vendido = $request->input('total_vendido');
+        $producto->total_cobrado = $request->input('total_cobrado');*/
+
+        $producto->update();
+
+        return redirect()->back()->with([
+        'message' => 'Producto modificado correctamente'
+        ]);
     }
 
     /**

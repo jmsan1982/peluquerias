@@ -6,7 +6,7 @@
         <div class="row justify-content-center">
             <div class="row">
                 <div class="col-sm-6 col-lg-3 text-center">
-                    <a class="nav-link text-light text-center" href="">
+                    <a class="nav-link text-light text-center" href="{{ route('productos.create') }}">
                         <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-body">
                                 <i class="fas fa-box-full"></i>
