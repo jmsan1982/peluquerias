@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\firmasController;
+use App\Http\Controllers\FirmasController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\PeluqueriasController;
 use App\Http\Controllers\productosController;
@@ -17,7 +17,7 @@ Route::resource('municipios', MunicipiosController::class);
 //peluquerias
 Route::resource('peluquerias', PeluqueriasController::class);
 //firmas
-Route::resource('firmas', firmasController::class);
+Route::resource('firmas', FirmasController::class);
 //productos
 Route::resource('productos', productosController::class);
 

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Firma;
+use App\Models\Peluqueria;
 use App\Models\Producto;
 use Illuminate\Http\Request;
 
@@ -50,11 +52,12 @@ class ProductosController extends Controller
      */
     public function show($id)
     {
-        $productos = Producto::where('id_firma', $id)->get();
+        $producto = Producto::find($id);
 
-        return view('productos.indexpr', [
-            'productos' => $productos
+        return view('productos.profilepr', [
+           'producto' => $producto
         ]);
+
     }
 
     /**
@@ -65,7 +68,17 @@ class ProductosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto = Producto::find($id);
+
+        $peluquerias = Peluqueria::all();
+
+        $firmas = Firma::all();
+
+        return view('productos.create_edit_producto', [
+            'producto' => $producto,
+            'peluquerias' => $peluquerias,
+            'firmas' => $firmas
+        ]);
     }
 
     /**

@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Firma;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
-class firmasController extends Controller
+class FirmasController extends Controller
 {
 
     public function __construct()
@@ -55,7 +56,11 @@ class firmasController extends Controller
      */
     public function show($id)
     {
-        //
+        $productos = Producto::where('id_firma', $id)->get();
+
+        return view('productos.indexpr', [
+            'productos' => $productos
+        ]);
     }
 
     /**

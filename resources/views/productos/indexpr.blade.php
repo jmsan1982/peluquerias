@@ -7,9 +7,9 @@
             <div class="row">
                 <div class="col-sm-6 col-lg-3 text-center">
                     <a class="nav-link text-light text-center" href="">
-                        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                        <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
                             <div class="card-body">
-                                <i class="fas fa-cut text-light"></i>
+                                <i class="fas fa-box-full"></i>
                                 <i class="fas fa-plus"></i> Añadir Producto
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                         @foreach($productos as $producto)
                             <tr>
                                 <td>
-                                    <a href=""
+                                    <a href="{{ route('productos.edit', $producto->id) }}"
                                        class="btn btn-primary btn-sm">
                                         <i class='fas fa-edit fa-lg'></i>
                                     </a>
@@ -45,8 +45,12 @@
                                     {{--@include('peluquerias/modal_eliminar')--}}
                                 </td>
 
-                                <td>{{ $producto->id_firma }}</td>
-                                <td>{{ $producto->nombre }}</td>
+                                <td>
+                                    {{ $producto->firma->nombre }}
+                                </td>
+                                <td>
+                                    <a href="{{ route('productos.show', $producto->id) }}">{{ $producto->nombre }}</a>
+                                </td>
                                 <td>{{ $producto->peluqueria->nombre }}</td>
                             </tr>
                         @endforeach
@@ -57,7 +61,7 @@
             <br/><br/>
             <div class="row">
                 <div class="col-sm-6 col-lg-3 text-center mt-4">
-                    <div class="card text-white bg-success text-center">
+                    <div class="card text-white bg-primary text-center">
                         <div class="card-body pb-0">
                             <a class="nav-link text-light text-center" href="javascript:history.go(-1)"><i
                                     class="fas fa-arrow-circle-left fa-2x text-light">
