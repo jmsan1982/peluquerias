@@ -111,20 +111,20 @@
                                                      href="{{ route('municipios.index') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                     class="hide-menu">Municipios</span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                     href="pages-profile.html" aria-expanded="false"><i
+                                                     href="{{ route('peluquerias.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-account-network"></i><span class="hide-menu">Peluquerias</span></a></li>
-<!--                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                     href="table-basic.html" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
-                                    class="hide-menu">Table</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                     href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
-                                    class="hide-menu">Icon</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                     href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span
-                                    class="hide-menu">Blank</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                                     href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span
-                                    class="hide-menu">404</span></a></li>-->
+                      <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                     href="{{ route('firmas.index') }}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
+                                    class="hide-menu">Productos</span></a></li>
+                        <!--                       <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                                          href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
+                                                         class="hide-menu">Icon</span></a></li>
+                                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                                          href="starter-kit.html" aria-expanded="false"><i class="mdi mdi-file"></i><span
+                                                         class="hide-menu">Blank</span></a></li>
+                                             <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                                                          href="error-404.html" aria-expanded="false"><i class="mdi mdi-alert-outline"></i><span
+                                                         class="hide-menu">404</span></a></li>-->
 
                     </ul>
 

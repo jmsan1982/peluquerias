@@ -164,7 +164,6 @@ class PeluqueriasController extends Controller
     public function destroy($id)
     {
         $peluqueria = Peluqueria::find($id);
-        $municipio_id = $peluqueria->id_municipio;
 
         $peluqueria->delete();
 

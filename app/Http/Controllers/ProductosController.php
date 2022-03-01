@@ -161,6 +161,12 @@ class ProductosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $producto = Producto::find($id);
+
+        $producto->delete();
+
+        $message = array('message' => 'El producto se ha borrado correctamente');
+
+        return redirect()->back()->with($message);
     }
 }
