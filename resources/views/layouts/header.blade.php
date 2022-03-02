@@ -98,9 +98,9 @@
                             <div class="user-profile d-flex no-block dropdown m-t-20">
                                 <div class="user-pic"><img src="{{asset('storage/images/d2.jpg')}}" alt="users"
                                                            class="rounded-circle" width="40" /></div>
-                                <div class="user-content hide-menu" style="margin-left: 15px">
-                                        <h5 class="m-b-0 user-name font-medium"><i
-                                                class="fa fa-angle-down"></i></h5>
+                                <div class="user-content hide-menu mt-3" style="margin-left: 15px">
+<!--                                        <h5 class="m-b-0 user-name font-medium"><i
+                                                class="fa fa-angle-down"></i></h5>-->
                                         <span class="op-5 user-email ml-5"><strong>{{auth()->user()->name}}</strong></span>
                                 </div>
                             </div>

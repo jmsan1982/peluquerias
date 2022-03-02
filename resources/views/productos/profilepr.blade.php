@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-left: 10px">
             <div class="row">
                 <div class="col-md-3 toppad pull-right col-md-offset-3 ">
 

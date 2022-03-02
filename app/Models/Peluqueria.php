@@ -6,6 +6,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -15,21 +17,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_municipio
  * @property string $nombre
  * @property string|null $contacto
+ * @property string|null $dni
+ * @property string|null $n_cuenta
  * @property string $direccion
  * @property string|null $telefono
  * @property string $observaciones
  * @property int $n_visitas
  * @property int|null $total_vendido
  * @property int|null $total_cobrado
+ * @property Carbon|null $created_at
+ * @property Carbon|null $updated_at
  * 
  * @property Municipio $municipio
+ * @property Collection|Producto[] $productos
  *
  * @package App\Models
  */
 class Peluqueria extends Model
 {
 	protected $table = 'peluquerias';
-	public $timestamps = false;
 
 	protected $casts = [
 		'id_municipio' => 'int',
@@ -42,6 +48,8 @@ class Peluqueria extends Model
 		'id_municipio',
 		'nombre',
 		'contacto',
+		'dni',
+		'n_cuenta',
 		'direccion',
 		'telefono',
 		'observaciones',
@@ -53,5 +61,10 @@ class Peluqueria extends Model
 	public function municipio()
 	{
 		return $this->belongsTo(Municipio::class, 'id_municipio');
+	}
+
+	public function productos()
+	{
+		return $this->hasMany(Producto::class, 'id_peluqueria');
 	}
 }

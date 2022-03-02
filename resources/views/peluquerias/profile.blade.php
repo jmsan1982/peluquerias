@@ -24,6 +24,14 @@
                                         <td class="col-md-7">{{ $peluqueria->contacto }}</td>
                                     </tr>
                                     <tr>
+                                        <td class="col-md-3 text-black">DNI / CIF:</td>
+                                        <td class="col-md-7">{{ $peluqueria->dni }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-3 text-black">Nº Cuenta:</td>
+                                        <td class="col-md-7">{{ $peluqueria->n_cuenta }}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-3 text-black">Direccion:</td>
                                         <td class="col-md-7">{{ $peluqueria->direccion }}</td>
                                     </tr>

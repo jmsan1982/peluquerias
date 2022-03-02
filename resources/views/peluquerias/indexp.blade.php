@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-left: 10px">
             <div class="row">
                 <div class="col-sm-6 col-lg-3 text-center">
                     <a class="nav-link text-light text-center" href="{{ route('peluquerias.create') }}">

@@ -71,6 +71,36 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="dni" class="col-md-4 col-form-label text-md-right">DNI / CIF</label>
+
+                                    <div class="col-md-6">
+                                        <input id="dni" type="text"
+                                               class="form-control @error('dni') is-invalid @enderror"
+                                               name="dni" autocomplete="dni"
+                                               value="{{ isset($peluqueria->dni) ? $peluqueria->dni : ''}}">
+                                        @error('dni')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="numero_cuenta" class="col-md-4 col-form-label text-md-right">Numero de cuenta</label>
+
+                                    <div class="col-md-6">
+                                        <input id="numero_cuenta" type="text"
+                                               class="form-control @error('numero_cuenta') is-invalid @enderror"
+                                               name="numero_cuenta" autocomplete="numero_cuenta"
+                                               value="{{ isset($peluqueria->n_cuenta) ? $peluqueria->n_cuenta : ''}}">
+                                        @error('numero_cuenta')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="direccion" class="col-md-4 col-form-label text-md-right">Dirección</label>
 
                                     <div class="col-md-6">

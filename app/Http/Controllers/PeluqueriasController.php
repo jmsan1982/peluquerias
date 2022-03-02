@@ -54,6 +54,8 @@ class PeluqueriasController extends Controller
         $validate = $this->validate($request,[
            'nombre_peluqueria' => ['required', 'string', 'max:255'],
            'nombre_contacto' => ['string', 'max:255'],
+           'dni' => ['max:20'],
+           'numero_cuenta' => ['max:100'],
            'direccion' => ['string', 'max:255'],
            'telefono' => ['required'],
            'observaciones' => ['string'],
@@ -67,6 +69,8 @@ class PeluqueriasController extends Controller
         $peluqueria->id_municipio = $request->input('municipio');
         $peluqueria->nombre = $request->input('nombre_peluqueria');
         $peluqueria->contacto = $request->input('nombre_contacto');
+        $peluqueria->dni = $request->input('dni');
+        $peluqueria->n_cuenta = $request->input('nuemro_cuenta');
         $peluqueria->direccion = $request->input('direccion');
         $peluqueria->telefono = $request->input('telefono');
         $peluqueria->observaciones = $request->input('observaciones');
@@ -128,6 +132,8 @@ class PeluqueriasController extends Controller
         $validate = $this->validate($request,[
             'nombre_peluqueria' => ['required', 'string', 'max:255'],
             'nombre_contacto' => ['string', 'max:255'],
+            'dni' => ['max:20'],
+            'numero_cuenta' => ['max:100'],
             'direccion' => ['string', 'max:255'],
             'telefono' => ['required'],
             'observaciones' => ['string'],
@@ -141,6 +147,8 @@ class PeluqueriasController extends Controller
         $peluqueria->id_municipio = $request->input('municipio');
         $peluqueria->nombre = $request->input('nombre_peluqueria');
         $peluqueria->contacto = $request->input('nombre_contacto');
+        $peluqueria->dni = $request->input('dni');
+        $peluqueria->n_cuenta = $request->input('nuemro_cuenta');
         $peluqueria->direccion = $request->input('direccion');
         $peluqueria->telefono = $request->input('telefono');
         $peluqueria->observaciones = $request->input('observaciones');
