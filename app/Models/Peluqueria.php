@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $dni
  * @property string|null $n_cuenta
  * @property string $direccion
+ * @property string|null $correo
  * @property string|null $telefono
  * @property string $observaciones
  * @property int $n_visitas
@@ -51,6 +52,7 @@ class Peluqueria extends Model
 		'dni',
 		'n_cuenta',
 		'direccion',
+		'correo',
 		'telefono',
 		'observaciones',
 		'n_visitas',

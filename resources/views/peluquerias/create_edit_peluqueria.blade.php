@@ -116,6 +116,21 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
+                                    <label for="correo" class="col-md-4 col-form-label text-md-right">E-Mail</label>
+
+                                    <div class="col-md-6">
+                                        <input id="correo" type="email"
+                                               class="form-control @error('correo') is-invalid @enderror"
+                                               name="correo" autocomplete="telefono"
+                                               value="{{ isset($peluqueria->correo) ? $peluqueria->correo : ''}}">
+                                        @error('correo')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
                                     <label for="telefono" class="col-md-4 col-form-label text-md-right">Telefono</label>
 
                                     <div class="col-md-6">

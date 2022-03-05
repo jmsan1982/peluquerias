@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $nombre
  * @property string|null $descripcion
  * @property int|null $precio
+ * @property int|null $descuento
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * 
@@ -33,7 +34,8 @@ class Producto extends Model
 	protected $casts = [
 		'id_firma' => 'int',
 		'id_peluqueria' => 'int',
-		'precio' => 'int'
+		'precio' => 'int',
+		'descuento' => 'int'
 	];
 
 	protected $fillable = [
@@ -41,7 +43,8 @@ class Producto extends Model
 		'id_peluqueria',
 		'nombre',
 		'descripcion',
-		'precio'
+		'precio',
+		'descuento'
 	];
 
 	public function firma()

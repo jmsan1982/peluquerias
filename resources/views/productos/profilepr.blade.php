@@ -9,6 +9,11 @@
                 </div>
                 <div
                     class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+                    @if($descuento)
+                        <div class="alert alert-warning">
+                            Este producto lleva un descuento asociado
+                        </div>
+                    @endif
                     <div class="card bg-light mb-3">
                         <div class="card-header text-center text-black"><h4>{{ $producto->nombre }}</h4></div>
                         <div class="card-body">
@@ -20,18 +25,30 @@
                                                                             <td></td>
                                                                         </tr>-->
                                     <tr>
+                                        <td class="col-md-3 text-black">Firma:</td>
+                                        <td class="col-md-7">{{ $producto->firma->nombre }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="col-md-3 text-black">Peluqueria:</td>
+                                        <td class="col-md-7">{{ $producto->peluqueria->nombre }}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-3 text-black">Descripcion:</td>
                                         <td class="col-md-7">{{ $producto->descripcion }}</td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-3 text-black">Precio:</td>
-                                        <td class="col-md-7">{{ $producto->precio }}</td>
-                                    </tr>
-<!--                                    <tr>
-                                        <td class="col-md-3 text-black">Telefono:</td>
-                                        <td class="col-md-7"></td>
+                                        @if(isset($producto->descuento) && !is_null($producto->descuento))
+                                            <td class="col-md-7 text-success">{{ $precioDescontado }} €</td>
+                                        @else
+                                            <td class="col-md-7">{{ $producto->precio }} €</td>
+                                        @endif
                                     </tr>
                                     <tr>
+                                        <td class="col-md-3 text-black">Descuento:</td>
+                                        <td class="col-md-7 {{!is_null($producto->descuento) ? 'text-success' : ''}}">{{ $producto->descuento }} %</td>
+                                    </tr>
+<!--                                    <tr>
                                         <td class="col-md-2 text-black">Observaciones:</td>
                                         <td class="col-md-7"></td>
                                     </tr>

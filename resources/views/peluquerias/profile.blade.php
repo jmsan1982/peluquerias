@@ -2,13 +2,18 @@
 
 @section('content')
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-left: 10px">
             <div class="row">
                 <div class="col-md-3 toppad pull-right col-md-offset-3 ">
 
                 </div>
                 <div
                     class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
+                    @if($hayDescuento)
+                        <div class="alert alert-warning">
+                            Esta peluqueria lleva productos con descuento
+                        </div>
+                    @endif
                     <div class="card bg-light mb-3">
                         <div class="card-header text-center text-black"><h4>{{ $peluqueria->nombre }}</h4></div>
                         <div class="card-body">
@@ -36,6 +41,10 @@
                                         <td class="col-md-7">{{ $peluqueria->direccion }}</td>
                                     </tr>
                                     <tr>
+                                        <td class="col-md-3 text-black">E-Mail:</td>
+                                        <td class="col-md-7">{{ $peluqueria->correo }}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-3 text-black">Telefono:</td>
                                         <td class="col-md-7">{{ $peluqueria->telefono }}</td>
                                     </tr>
@@ -49,11 +58,11 @@
                                     </tr>
                                     <tr>
                                         <td class="col-md-2 text-black">Total vendido:</td>
-                                        <td class="col-md-7">{{$peluqueria->total_vendido}} €</td>
+                                        <td class="col-md-7 {{ $hayDescuento ? 'text-warning' : ''}}">{{$totalVendido}} €</td>
                                     </tr>
                                     <tr>
                                         <td class="col-md-2 text-black">Cobrado:</td>
-                                        <td class="col-md-7 {{ $peluqueria->total_cobrado < $peluqueria->total_vendido ? 'text-danger' : 'text-success'  }}">{{$peluqueria->total_cobrado}}
+                                        <td class="col-md-7 {{$peluqueria->total_cobrado == $totalVendido ? 'text-succes' : 'text-danger'  }}">{{$peluqueria->total_cobrado}}
                                             €
                                         </td>
                                     </tr>

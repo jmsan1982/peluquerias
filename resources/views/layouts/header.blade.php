@@ -107,15 +107,15 @@
                             <!-- End User Profile-->
                         </li>
                         <!-- User Profile-->
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+<!--                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                      href="{{ route('municipios.index') }}" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                                    class="hide-menu">Municipios</span></a></li>
+                                    class="hide-menu"><i class="fas fa-city text-info"></i></span></a></li>
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                      href="{{ route('peluquerias.index') }}" aria-expanded="false"><i
                                     class="mdi mdi-account-network"></i><span class="hide-menu">Peluquerias</span></a></li>
                       <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                      href="{{ route('firmas.index') }}" aria-expanded="false"><i class="mdi mdi-border-all"></i><span
-                                    class="hide-menu">Productos</span></a></li>
+                                    class="hide-menu">Productos</span></a></li>-->
                         <!--                       <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                                                                           href="icon-material.html" aria-expanded="false"><i class="mdi mdi-face"></i><span
                                                          class="hide-menu">Icon</span></a></li>
@@ -140,7 +140,10 @@
                         <div class="d-flex align-items-center">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="{{ route('home') }}"><strong>Inicio</strong></a></li>
+                                    <li><a href="{{ route('home') }}"><strong>Inicio</strong></a></li>
+                                    <li><a href="{{ route('municipios.index') }}"><strong>Municipios</strong></a></li>
+                                    <li><a href="{{ route('peluquerias.index') }}"><strong>Peluquerias</strong></a></li>
+                                    <li><a href="{{ route('firmas.index') }}"><strong>Firmas</strong></a></li>
 <!--                                    <li class="breadcrumb-item active" aria-current="page">Library</li>-->
                                 </ol>
                             </nav>

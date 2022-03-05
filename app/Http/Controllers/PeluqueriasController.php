@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Municipio;
 use App\Models\Peluqueria;
+use App\Models\Producto;
 use Illuminate\Http\Request;
 
 class PeluqueriasController extends Controller
@@ -57,10 +58,10 @@ class PeluqueriasController extends Controller
            'dni' => ['max:20'],
            'numero_cuenta' => ['max:100'],
            'direccion' => ['string', 'max:255'],
+           'correo' =>['max:150'],
            'telefono' => ['required'],
            'observaciones' => ['string'],
            'numero_visitas' => ['integer'],
-           'total_vendido' => ['integer'],
            'total_cobrado' => ['integer']
         ]);
 
@@ -70,12 +71,12 @@ class PeluqueriasController extends Controller
         $peluqueria->nombre = $request->input('nombre_peluqueria');
         $peluqueria->contacto = $request->input('nombre_contacto');
         $peluqueria->dni = $request->input('dni');
-        $peluqueria->n_cuenta = $request->input('nuemro_cuenta');
+        $peluqueria->n_cuenta = $request->input('numero_cuenta');
         $peluqueria->direccion = $request->input('direccion');
+        $peluqueria->correo = $request->input('correo');
         $peluqueria->telefono = $request->input('telefono');
         $peluqueria->observaciones = $request->input('observaciones');
         $peluqueria->n_visitas = $request->input('numero_visitas');
-        $peluqueria->total_vendido = $request->input('total_vendido');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
 
         $peluqueria->save();
@@ -94,12 +95,27 @@ class PeluqueriasController extends Controller
     public function show($id)
     {
         $peluqueria = Peluqueria::find($id);
+        $hayDescuento = false;
 
-        $pendiente = $peluqueria->total_vendido - $peluqueria->total_cobrado;
+        $totalVendido = 0;
+
+        foreach ($peluqueria->productos as $producto){
+            if (isset($producto->descuento) && !is_null($producto->descuento)){
+                $descuento = (new ProductosController())->restarDescuento($producto->descuento, $producto->precio);
+                $totalVendido = $totalVendido + $descuento;
+                $hayDescuento = true;
+            }else{
+                $totalVendido = $totalVendido + $producto->precio;
+            }
+        }
+
+        $pendiente = $totalVendido - $peluqueria->total_cobrado;
 
         return view('peluquerias.profile', [
             'peluqueria' => $peluqueria,
-            'pendiente' => $pendiente
+            'pendiente' => $pendiente,
+            'totalVendido' => $totalVendido,
+            'hayDescuento' => $hayDescuento
         ]);
     }
 
@@ -134,11 +150,11 @@ class PeluqueriasController extends Controller
             'nombre_contacto' => ['string', 'max:255'],
             'dni' => ['max:20'],
             'numero_cuenta' => ['max:100'],
+            'correo' =>['max:150'],
             'direccion' => ['string', 'max:255'],
             'telefono' => ['required'],
             'observaciones' => ['string'],
             'numero_visitas' => ['integer'],
-            'total_vendido' => ['integer'],
             'total_cobrado' => ['integer']
         ]);
 
@@ -148,12 +164,12 @@ class PeluqueriasController extends Controller
         $peluqueria->nombre = $request->input('nombre_peluqueria');
         $peluqueria->contacto = $request->input('nombre_contacto');
         $peluqueria->dni = $request->input('dni');
-        $peluqueria->n_cuenta = $request->input('nuemro_cuenta');
+        $peluqueria->n_cuenta = $request->input('numero_cuenta');
         $peluqueria->direccion = $request->input('direccion');
+        $peluqueria->correo = $request->input('correo');
         $peluqueria->telefono = $request->input('telefono');
         $peluqueria->observaciones = $request->input('observaciones');
         $peluqueria->n_visitas = $request->input('numero_visitas');
-        $peluqueria->total_vendido = $request->input('total_vendido');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
 
         $peluqueria->update();

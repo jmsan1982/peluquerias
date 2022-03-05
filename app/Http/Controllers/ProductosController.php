@@ -50,9 +50,9 @@ class ProductosController extends Controller
         $validate = $this->validate($request,[
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'precio' => ['required', 'integer']
-            /*'telefono' => ['required'],
-            'observaciones' => ['string'],
+            'precio' => ['required', 'integer'],
+            'descuento' => ['integer'],
+            /*'observaciones' => ['string'],
             'numero_visitas' => ['integer'],
             'total_vendido' => ['integer'],
             'total_cobrado' => ['integer']*/
@@ -65,8 +65,8 @@ class ProductosController extends Controller
         $producto->nombre = $request->input('nombre_producto');
         $producto->descripcion = $request->input('descripcion');
         $producto->precio = $request->input('precio');
-        /* $producto->observaciones = $request->input('observaciones');
-         $producto->n_visitas = $request->input('numero_visitas');
+        $producto->descuento = $request->input('descuento');
+        /* $producto->n_visitas = $request->input('numero_visitas');
          $producto->total_vendido = $request->input('total_vendido');
          $producto->total_cobrado = $request->input('total_cobrado');*/
 
@@ -86,9 +86,17 @@ class ProductosController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
+        $descuento = false;
+        $precioDescontado = $this->restarDescuento($producto->descuento, $producto->precio);
+
+        if (isset($producto->descuento) && !is_null($producto->descuento)){
+            $descuento = true;
+        }
 
         return view('productos.profilepr', [
-           'producto' => $producto
+           'producto' => $producto,
+            'descuento' => $descuento,
+            'precioDescontado' => $precioDescontado
         ]);
 
     }
@@ -126,9 +134,9 @@ class ProductosController extends Controller
         $validate = $this->validate($request,[
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'precio' => ['required', 'integer']
-            /*'telefono' => ['required'],
-            'observaciones' => ['string'],
+            'precio' => ['required', 'integer'],
+            'descuento' => ['integer'],
+            /*'observaciones' => ['string'],
             'numero_visitas' => ['integer'],
             'total_vendido' => ['integer'],
             'total_cobrado' => ['integer']*/
@@ -141,6 +149,7 @@ class ProductosController extends Controller
         $producto->nombre = $request->input('nombre_producto');
         $producto->descripcion = $request->input('descripcion');
         $producto->precio = $request->input('precio');
+        $producto->descuento = $request->input('descuento');
        /* $producto->observaciones = $request->input('observaciones');
         $producto->n_visitas = $request->input('numero_visitas');
         $producto->total_vendido = $request->input('total_vendido');
@@ -168,5 +177,13 @@ class ProductosController extends Controller
         $message = array('message' => 'El producto se ha borrado correctamente');
 
         return redirect()->back()->with($message);
+    }
+
+    public function restarDescuento($descuento, $precio){
+        $decimal = $descuento / 100;
+        $descuento = $precio * $decimal;
+        $totalDescontado = $precio - $descuento;
+
+        return $totalDescontado;
     }
 }

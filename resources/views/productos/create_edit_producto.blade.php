@@ -106,6 +106,21 @@
                                         @enderror
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="descuento" class="col-md-4 col-form-label text-md-right">Descuento</label>
+
+                                    <div class="col-md-6">
+                                        <input id="descuento" type="text"
+                                               class="form-control @error('descuento') is-invalid @enderror"
+                                               name="descuento" required autocomplete="telefono"
+                                               value="{{ isset($producto->descuento) ? $producto->descuento : ''}}">
+                                        @error('descuento')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
 <!--                                <div class="form-group row">
                                     <label for="telefono" class="col-md-4 col-form-label text-md-right">Telefono</label>
 
