@@ -97,9 +97,24 @@
                                     <div class="col-md-6">
                                         <input id="precio" type="number"
                                                class="form-control @error('precio') is-invalid @enderror"
-                                               name="precio" autocomplete="direccion"
+                                               name="precio" autocomplete="precio"
                                                value="{{ isset($producto->precio) ? $producto->precio : ''}}">
                                         @error('precio')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="cantidad" class="col-md-4 col-form-label text-md-right">Cantidad</label>
+
+                                    <div class="col-md-6">
+                                        <input id="cantidad" type="number"
+                                               class="form-control @error('cantidad') is-invalid @enderror"
+                                               name="cantidad" required autocomplete="cantidad"
+                                               value="{{ isset($producto->cantidad) ? $producto->cantidad : ''}}">
+                                        @error('cantidad')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -112,7 +127,7 @@
                                     <div class="col-md-6">
                                         <input id="descuento" type="text"
                                                class="form-control @error('descuento') is-invalid @enderror"
-                                               name="descuento" required autocomplete="telefono"
+                                               name="descuento" autocomplete="telefono"
                                                value="{{ isset($producto->descuento) ? $producto->descuento : ''}}">
                                         @error('descuento')
                                         <span class="invalid-feedback" role="alert">

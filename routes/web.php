@@ -3,7 +3,7 @@
 use App\Http\Controllers\FirmasController;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\PeluqueriasController;
-use App\Http\Controllers\productosController;
+use App\Http\Controllers\ProductosController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,5 +19,5 @@ Route::resource('peluquerias', PeluqueriasController::class);
 //firmas
 Route::resource('firmas', FirmasController::class);
 //productos
-Route::resource('productos', productosController::class);
+Route::resource('productos', ProductosController::class);
 

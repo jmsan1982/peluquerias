@@ -51,12 +51,13 @@ class ProductosController extends Controller
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
             'precio' => ['required', 'integer'],
-            'descuento' => ['integer'],
-            /*'observaciones' => ['string'],
-            'numero_visitas' => ['integer'],
-            'total_vendido' => ['integer'],
-            'total_cobrado' => ['integer']*/
+            'cantidad' => ['required', 'integer']
         ]);
+        if (!is_null($request->input('descuento'))){
+            $validateDescuento = $this->validate($request,[
+                'descuento' => ['integer'],
+            ]);
+        }
 
         $producto = new Producto();
 
@@ -66,9 +67,7 @@ class ProductosController extends Controller
         $producto->descripcion = $request->input('descripcion');
         $producto->precio = $request->input('precio');
         $producto->descuento = $request->input('descuento');
-        /* $producto->n_visitas = $request->input('numero_visitas');
-         $producto->total_vendido = $request->input('total_vendido');
-         $producto->total_cobrado = $request->input('total_cobrado');*/
+        $producto->cantidad = $request->input('cantidad');
 
         $producto->save();
 
@@ -135,12 +134,13 @@ class ProductosController extends Controller
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
             'precio' => ['required', 'integer'],
-            'descuento' => ['integer'],
-            /*'observaciones' => ['string'],
-            'numero_visitas' => ['integer'],
-            'total_vendido' => ['integer'],
-            'total_cobrado' => ['integer']*/
+            'cantidad' => ['required', 'integer']
         ]);
+        if (!is_null($request->input('descuento'))){
+            $validateDescuento = $this->validate($request,[
+                'descuento' => ['integer'],
+            ]);
+        }
 
         $producto = Producto::find($id);
 
@@ -150,10 +150,7 @@ class ProductosController extends Controller
         $producto->descripcion = $request->input('descripcion');
         $producto->precio = $request->input('precio');
         $producto->descuento = $request->input('descuento');
-       /* $producto->observaciones = $request->input('observaciones');
-        $producto->n_visitas = $request->input('numero_visitas');
-        $producto->total_vendido = $request->input('total_vendido');
-        $producto->total_cobrado = $request->input('total_cobrado');*/
+        $producto->cantidad = $request->input('cantidad');
 
         $producto->update();
 

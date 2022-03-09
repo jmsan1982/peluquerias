@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal" id="modal_eliminar_productos">
+<div class="modal" id="modal_eliminar_productos_{{$producto->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
 

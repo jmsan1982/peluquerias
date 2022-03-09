@@ -45,6 +45,10 @@
                                         @endif
                                     </tr>
                                     <tr>
+                                        <td class="col-md-3 text-black">Cantidad:</td>
+                                        <td class="col-md-7">{{ $producto->cantidad }}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-3 text-black">Descuento:</td>
                                         <td class="col-md-7 {{!is_null($producto->descuento) ? 'text-success' : ''}}">{{ $producto->descuento }} %</td>
                                     </tr>

@@ -1,5 +1,5 @@
 <!-- The Modal -->
-<div class="modal" id="modal_aliminar_peluqueria">
+<div class="modal" id="modal_aliminar_peluqueria_{{$peluqueria->id}}">
     <div class="modal-dialog">
         <div class="modal-content">
 

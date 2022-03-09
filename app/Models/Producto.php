@@ -18,6 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $nombre
  * @property string|null $descripcion
  * @property int|null $precio
+ * @property int|null $cantidad
  * @property int|null $descuento
  * @property Carbon $created_at
  * @property Carbon $updated_at
@@ -35,6 +36,7 @@ class Producto extends Model
 		'id_firma' => 'int',
 		'id_peluqueria' => 'int',
 		'precio' => 'int',
+		'cantidad' => 'int',
 		'descuento' => 'int'
 	];
 
@@ -44,6 +46,7 @@ class Producto extends Model
 		'nombre',
 		'descripcion',
 		'precio',
+		'cantidad',
 		'descuento'
 	];
 

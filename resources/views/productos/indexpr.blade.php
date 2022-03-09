@@ -39,7 +39,7 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <!-- Button to Open the Modal -->
                                     <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                            data-target="#modal_eliminar_productos">
+                                            data-target="#modal_eliminar_productos_{{$producto->id}}">
                                         <i class='fas fa-trash-alt fa-lg'></i>
                                     </button>
                                     @include('productos/modal_eliminar_productos')
