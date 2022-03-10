@@ -177,21 +177,6 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="total_vendido" class="col-md-4 col-form-label text-md-right">Total Vendido</label>
-
-                                    <div class="col-md-6">
-                                        <input id="total_vendido" type="number"
-                                               class="form-control @error('total_vendido') is-invalid @enderror" name="total_vendido"
-                                               autocomplete="total_vendido"
-                                               value="{{ isset($peluqueria->total_vendido) ? $peluqueria->total_vendido : ''}}">
-                                        @error('total_vendido')
-                                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="form-group row">
                                     <label for="total_cobrado" class="col-md-4 col-form-label text-md-right">Total Cobrado</label>
 
                                     <div class="col-md-6">

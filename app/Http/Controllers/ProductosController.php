@@ -50,7 +50,7 @@ class ProductosController extends Controller
         $validate = $this->validate($request,[
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'precio' => ['required', 'integer'],
+            'precio' => ['required'],
             'cantidad' => ['required', 'integer']
         ]);
         if (!is_null($request->input('descuento'))){
@@ -133,7 +133,7 @@ class ProductosController extends Controller
         $validate = $this->validate($request,[
             'nombre_producto' => ['required', 'string', 'max:255'],
             'descripcion' => ['required', 'string', 'max:255'],
-            'precio' => ['required', 'integer'],
+            'precio' => ['required'],
             'cantidad' => ['required', 'integer']
         ]);
         if (!is_null($request->input('descuento'))){

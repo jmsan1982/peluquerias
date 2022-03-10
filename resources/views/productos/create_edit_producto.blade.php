@@ -95,7 +95,7 @@
                                     <label for="precio" class="col-md-4 col-form-label text-md-right">Precio</label>
 
                                     <div class="col-md-6">
-                                        <input id="precio" type="number"
+                                        <input id="precio" type="text"
                                                class="form-control @error('precio') is-invalid @enderror"
                                                name="precio" autocomplete="precio"
                                                value="{{ isset($producto->precio) ? $producto->precio : ''}}">

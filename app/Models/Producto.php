@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id_peluqueria
  * @property string $nombre
  * @property string|null $descripcion
- * @property int|null $precio
+ * @property float|null $precio
  * @property int|null $cantidad
  * @property int|null $descuento
  * @property Carbon $created_at
@@ -35,7 +35,7 @@ class Producto extends Model
 	protected $casts = [
 		'id_firma' => 'int',
 		'id_peluqueria' => 'int',
-		'precio' => 'int',
+		'precio' => 'float',
 		'cantidad' => 'int',
 		'descuento' => 'int'
 	];
