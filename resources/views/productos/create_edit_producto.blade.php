@@ -98,7 +98,7 @@
                                         <input id="precio" type="text"
                                                class="form-control @error('precio') is-invalid @enderror"
                                                name="precio" autocomplete="precio"
-                                               value="{{ isset($producto->precio) ? $producto->precio : ''}}">
+                                               value="{{ isset($precio) ? $precio : ''}}">
                                         @error('precio')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

@@ -59,13 +59,15 @@ class ProductosController extends Controller
             ]);
         }
 
+        $precio =  bcmul($request->input('precio'), $request->input('cantidad'), 2);
+
         $producto = new Producto();
 
         $producto->id_peluqueria = $request->input('peluqueria');
         $producto->id_firma = $request->input('firma');
         $producto->nombre = $request->input('nombre_producto');
         $producto->descripcion = $request->input('descripcion');
-        $producto->precio = $request->input('precio');
+        $producto->precio = $request->input('cantidad') > 0 && $request->input('cantidad') != null ? $precio : 0;
         $producto->descuento = $request->input('descuento');
         $producto->cantidad = $request->input('cantidad');
 
@@ -112,12 +114,15 @@ class ProductosController extends Controller
 
         $productos = Peluqueria::all();
 
+        $precio = bcdiv($producto->precio,$producto->cantidad,2);
+
         $firmas = Firma::all();
 
         return view('productos.create_edit_producto', [
             'producto' => $producto,
             'peluquerias' => $productos,
-            'firmas' => $firmas
+            'firmas' => $firmas,
+            'precio' => $precio
         ]);
     }
 
@@ -142,13 +147,15 @@ class ProductosController extends Controller
             ]);
         }
 
+        $precio =  bcmul($request->input('precio'), $request->input('cantidad'), 2);
+
         $producto = Producto::find($id);
 
         $producto->id_peluqueria = $request->input('peluqueria');
         $producto->id_firma = $request->input('firma');
         $producto->nombre = $request->input('nombre_producto');
         $producto->descripcion = $request->input('descripcion');
-        $producto->precio = $request->input('precio');
+        $producto->precio = $request->input('cantidad') > 0 && $request->input('cantidad') != null ? $precio : 0;
         $producto->descuento = $request->input('descuento');
         $producto->cantidad = $request->input('cantidad');
 
