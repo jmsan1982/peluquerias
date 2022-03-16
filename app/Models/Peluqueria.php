@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $n_visitas
  * @property int|null $total_vendido
  * @property int|null $total_cobrado
+ * @property Carbon|null $ultima_visita
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -45,6 +46,10 @@ class Peluqueria extends Model
 		'total_cobrado' => 'int'
 	];
 
+	protected $dates = [
+		'ultima_visita'
+	];
+
 	protected $fillable = [
 		'id_municipio',
 		'nombre',
@@ -57,7 +62,8 @@ class Peluqueria extends Model
 		'observaciones',
 		'n_visitas',
 		'total_vendido',
-		'total_cobrado'
+		'total_cobrado',
+		'ultima_visita'
 	];
 
 	public function municipio()

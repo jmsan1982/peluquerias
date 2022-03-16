@@ -16,6 +16,9 @@
                 </div>
             </div>
             @include('includes/message')
+            <div id="actualizar_peluqueria" class="alert alert-danger d-none">
+                Error al al actualizar la ultima fecha de visita de la peluqueria
+            </div>
             <div class="row">
                 <div class="col-xs-6 col-sm-12 col-lg-12 text-center">
                     <table class="table table-bordered table-sm mb-0 text-center " id="tabla_peluquerias">
@@ -30,6 +33,8 @@
                             @if(isset($all) && $all)
                                 <th scope="col" class="text-center"><b>Población</b></th>
                             @endif
+                            <th scope="col" class="text-center"><b>Ultima Visita</b></th>
+                            <th scope="col" class="text-center"><b>Actualizar Visita</b></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -59,6 +64,8 @@
                                 @if(isset($all) && $all)
                                     <td>{{$peluqueria->municipio->nombre}}</td>
                                 @endif
+                                <td>{{is_null($peluqueria->ultima_visita) ? '' : \Carbon\Carbon::parse($peluqueria->ultima_visita)->format('d-m-Y')}}</td>
+                                <td><i class="iVisitaPlus fas fa-calendar-plus fa-2x" onclick="actualizarFecha({{$peluqueria->id}})"></i></td>
                             </tr>
                         @endforeach
                         </tbody>

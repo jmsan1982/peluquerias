@@ -6,7 +6,7 @@ $(document).ready( function () {
             "info":       "Del _START_ al _END_ de _TOTAL_ ",
             "infoEmpty":   "Mostrando 0 Peluquerias de un total de 0.",
             "infoFiltered":   "(filtrados de un total de _MAX_ Peluquerias)",
-            "infoPostFix":   "(actualizados)",
+            "infoPostFix":   "(actualizadas)",
             "lengthMenu":   "Mostrar _MENU_ Peluquerias",
             "loadingRecords":  "Cargando...",
             "processing":   "Procesando...",
@@ -31,6 +31,8 @@ $(document).ready( function () {
             {"data": 1},
             {"data": 2},
             {"data": 3},
+            {"data": 4},
+            {"data": 5},
         ],
     });
     $('label').addClass('form-inline');

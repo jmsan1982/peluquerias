@@ -16,6 +16,7 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::resource('municipios', MunicipiosController::class);
 //peluquerias
 Route::resource('peluquerias', PeluqueriasController::class);
+Route::get('/peluqueria/actualizarUltimaVisita/{id}', [PeluqueriasController::class, 'actualizarUltimaVisita']);
 //firmas
 Route::resource('firmas', FirmasController::class);
 //productos

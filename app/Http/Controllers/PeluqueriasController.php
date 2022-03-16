@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Municipio;
 use App\Models\Peluqueria;
 use App\Models\Producto;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PeluqueriasController extends Controller
@@ -25,7 +26,7 @@ class PeluqueriasController extends Controller
 
         return view('peluquerias.indexp', [
             'peluquerias' => $peluquerias,
-            'all' => $all
+            'all' => $all,
         ]);
     }
 
@@ -78,6 +79,7 @@ class PeluqueriasController extends Controller
         $peluqueria->observaciones = $request->input('observaciones');
         $peluqueria->n_visitas = $request->input('numero_visitas');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
+        $peluqueria->ultima_visita = $request->input('ultima_visita');
 
         $peluqueria->save();
 
@@ -171,6 +173,7 @@ class PeluqueriasController extends Controller
         $peluqueria->observaciones = $request->input('observaciones');
         $peluqueria->n_visitas = $request->input('numero_visitas');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
+        $peluqueria->ultima_visita = $request->input('ultima_visita');
 
         $peluqueria->update();
 
@@ -194,5 +197,20 @@ class PeluqueriasController extends Controller
         $message = array('message' => 'La peluqueria se ha borrado correctamente');
 
         return redirect()->back()->with($message);
+    }
+
+    public function actualizarUltimaVisita($id){
+        try {
+
+            $peluqueria = Peluqueria::find($id);
+            $peluqueria->ultima_visita = Carbon::now();
+            $peluqueria->n_visitas = $peluqueria->n_visitas + 1;
+            $peluqueria->update();
+
+            return json_encode(true);
+
+        }catch (\Exception $e){
+            return json_encode(false);
+        }
     }
 }

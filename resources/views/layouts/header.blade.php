@@ -17,6 +17,7 @@
     <script src="{{ asset('js/waves.js') }}" defer></script>
     <script src="{{ asset('js/sidebarmenu.js') }}" defer></script>
     <script src="{{ asset('js/custom.js') }}" defer></script>
+    <script src="{{ asset('js/functions.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
