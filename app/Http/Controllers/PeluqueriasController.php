@@ -63,7 +63,8 @@ class PeluqueriasController extends Controller
            'telefono' => ['required'],
            'observaciones' => ['string'],
            'numero_visitas' => ['integer'],
-           'total_cobrado' => ['integer']
+           'total_cobrado' => ['integer'],
+           'dia_cierre' => ['string', 'max:50']
         ]);
 
         $peluqueria = new Peluqueria();
@@ -80,6 +81,7 @@ class PeluqueriasController extends Controller
         $peluqueria->n_visitas = $request->input('numero_visitas');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
         $peluqueria->ultima_visita = $request->input('ultima_visita');
+        $peluqueria->dia_cierre = $request->input('dia_cierre');
 
         $peluqueria->save();
 
@@ -157,7 +159,8 @@ class PeluqueriasController extends Controller
             'telefono' => ['required'],
             'observaciones' => ['string'],
             'numero_visitas' => ['integer'],
-            'total_cobrado' => ['integer']
+            'total_cobrado' => ['integer'],
+            'dia_cierre' => ['string', 'max:50']
         ]);
 
         $peluqueria = Peluqueria::find($id);
@@ -174,6 +177,7 @@ class PeluqueriasController extends Controller
         $peluqueria->n_visitas = $request->input('numero_visitas');
         $peluqueria->total_cobrado = $request->input('total_cobrado');
         $peluqueria->ultima_visita = $request->input('ultima_visita');
+        $peluqueria->dia_cierre = $request->input('dia_cierre');
 
         $peluqueria->update();
 

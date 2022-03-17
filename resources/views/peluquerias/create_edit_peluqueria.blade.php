@@ -198,9 +198,37 @@
                                     <div class="col-md-6">
                                         <input id="total_cobrado" type="number"
                                                class="form-control @error('total_cobrado') is-invalid @enderror" name="total_cobrado"
-                                               autocomplete="total_cobrado"
+                                               required autocomplete="total_cobrado"
                                                value="{{ isset($peluqueria->total_cobrado) ? $peluqueria->total_cobrado : ''}}">
                                         @error('total_cobrado')
+                                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="municipio"
+                                           class="col-md-4 col-form-label text-md-right">Municipio</label>
+
+                                    <div class="col-md-6">
+                                        <select id="dia_cierre"
+                                                class="form-control @error('dia_cierre') is-invalid @enderror"
+                                                name="dia_cierre" autofocus>
+                                            <option value="Lunes" selected>Lunes
+                                            </option>
+                                            <option value="Martes">Martes
+                                            </option>
+                                            <option value="Miercoles">Miercoles
+                                            </option>
+                                            <option value="Jueves">Jueves
+                                            </option>
+                                            <option value="Viernes">Viernes
+                                            </option>
+                                            <option value="Sabado">Sabado
+                                            </option>
+                                        </select>
+                                        @error('dia_cierre')
                                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>

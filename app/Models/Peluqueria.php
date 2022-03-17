@@ -27,6 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $total_vendido
  * @property int|null $total_cobrado
  * @property Carbon|null $ultima_visita
+ * @property string|null $dia_cierre
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -63,7 +64,8 @@ class Peluqueria extends Model
 		'n_visitas',
 		'total_vendido',
 		'total_cobrado',
-		'ultima_visita'
+		'ultima_visita',
+		'dia_cierre'
 	];
 
 	public function municipio()

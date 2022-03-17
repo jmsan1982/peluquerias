@@ -61,6 +61,10 @@
                                         <td class="col-md-7">{{ is_null($peluqueria->ultima_visita) ? '' : \Carbon\Carbon::parse($peluqueria->ultima_visita)->format('d-m-Y') }}</td>
                                     </tr>
                                     <tr>
+                                        <td class="col-md-2 text-black">Dia Cierre:</td>
+                                        <td class="col-md-7">{{$peluqueria->dia_cierre}}</td>
+                                    </tr>
+                                    <tr>
                                         <td class="col-md-2 text-black">Total vendido:</td>
                                         <td class="col-md-7 {{ $hayDescuento ? 'text-warning' : ''}}">{{$totalVendido}} €</td>
                                     </tr>
