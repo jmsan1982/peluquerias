@@ -53,37 +53,11 @@ class PeluqueriasController extends Controller
      */
     public function store(Request $request)
     {
-        $validate = $this->validate($request,[
-           'nombre_peluqueria' => ['required', 'string', 'max:255'],
-           'nombre_contacto' => ['string', 'max:255'],
-           'dni' => ['max:20'],
-           'numero_cuenta' => ['max:100'],
-           'direccion' => ['string', 'max:255'],
-           'correo' =>['max:150'],
-           'telefono' => ['required'],
-           'observaciones' => ['string'],
-           'numero_visitas' => ['integer'],
-           'total_cobrado' => ['integer'],
-           'dia_cierre' => ['string', 'max:50']
-        ]);
+        $this->validateData($request);
 
         $peluqueria = new Peluqueria();
 
-        $peluqueria->id_municipio = $request->input('municipio');
-        $peluqueria->nombre = $request->input('nombre_peluqueria');
-        $peluqueria->contacto = $request->input('nombre_contacto');
-        $peluqueria->dni = $request->input('dni');
-        $peluqueria->n_cuenta = $request->input('numero_cuenta');
-        $peluqueria->direccion = $request->input('direccion');
-        $peluqueria->correo = $request->input('correo');
-        $peluqueria->telefono = $request->input('telefono');
-        $peluqueria->observaciones = $request->input('observaciones');
-        $peluqueria->n_visitas = $request->input('numero_visitas');
-        $peluqueria->total_cobrado = $request->input('total_cobrado');
-        $peluqueria->ultima_visita = $request->input('ultima_visita');
-        $peluqueria->dia_cierre = $request->input('dia_cierre');
-
-        $peluqueria->save();
+        $this->dataSave($peluqueria, $request, 'save');
 
         return redirect()->back()->with([
            'message' => 'Peluqueria añadida correctamente'
@@ -149,37 +123,11 @@ class PeluqueriasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validate = $this->validate($request,[
-            'nombre_peluqueria' => ['required', 'string', 'max:255'],
-            'nombre_contacto' => ['string', 'max:255'],
-            'dni' => ['max:20'],
-            'numero_cuenta' => ['max:100'],
-            'correo' =>['max:150'],
-            'direccion' => ['string', 'max:255'],
-            'telefono' => ['required'],
-            'observaciones' => ['string'],
-            'numero_visitas' => ['integer'],
-            'total_cobrado' => ['integer'],
-            'dia_cierre' => ['string', 'max:50']
-        ]);
+        $this->validateData($request);
 
         $peluqueria = Peluqueria::find($id);
 
-        $peluqueria->id_municipio = $request->input('municipio');
-        $peluqueria->nombre = $request->input('nombre_peluqueria');
-        $peluqueria->contacto = $request->input('nombre_contacto');
-        $peluqueria->dni = $request->input('dni');
-        $peluqueria->n_cuenta = $request->input('numero_cuenta');
-        $peluqueria->direccion = $request->input('direccion');
-        $peluqueria->correo = $request->input('correo');
-        $peluqueria->telefono = $request->input('telefono');
-        $peluqueria->observaciones = $request->input('observaciones');
-        $peluqueria->n_visitas = $request->input('numero_visitas');
-        $peluqueria->total_cobrado = $request->input('total_cobrado');
-        $peluqueria->ultima_visita = $request->input('ultima_visita');
-        $peluqueria->dia_cierre = $request->input('dia_cierre');
-
-        $peluqueria->update();
+        $this->dataSave($peluqueria, $request, 'update');
 
         return redirect()->back()->with([
             'message' => 'Peluqueria modificada correctamente'
@@ -216,5 +164,40 @@ class PeluqueriasController extends Controller
         }catch (\Exception $e){
             return json_encode(false);
         }
+    }
+
+    private function dataSave($peluqueria, $request, $action){
+
+        $peluqueria->id_municipio = $request->input('municipio');
+        $peluqueria->nombre = $request->input('nombre_peluqueria');
+        $peluqueria->contacto = $request->input('nombre_contacto');
+        $peluqueria->dni = $request->input('dni');
+        $peluqueria->n_cuenta = $request->input('numero_cuenta');
+        $peluqueria->direccion = $request->input('direccion');
+        $peluqueria->correo = $request->input('correo');
+        $peluqueria->telefono = $request->input('telefono');
+        $peluqueria->observaciones = $request->input('observaciones');
+        $peluqueria->n_visitas = $request->input('numero_visitas');
+        $peluqueria->total_cobrado = $request->input('total_cobrado');
+        $peluqueria->ultima_visita = $request->input('ultima_visita');
+        $peluqueria->dia_cierre = $request->input('dia_cierre');
+
+        $peluqueria->$action();
+    }
+
+    private function validateData($request){
+        $this->validate($request,[
+            'nombre_peluqueria' => ['required', 'string', 'max:255'],
+            'nombre_contacto' => ['string', 'max:255'],
+            'dni' => ['max:20'],
+            'numero_cuenta' => ['max:100'],
+            'correo' =>['max:150'],
+            'direccion' => ['string', 'max:255'],
+            'telefono' => ['max:255'],
+            'observaciones' => ['string'],
+            'numero_visitas' => ['integer'],
+            'total_cobrado' => ['integer'],
+            'dia_cierre' => ['string', 'max:50']
+        ]);
     }
 }
