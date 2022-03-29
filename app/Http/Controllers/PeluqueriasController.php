@@ -166,6 +166,26 @@ class PeluqueriasController extends Controller
         }
     }
 
+    public function actualizarInteresa($id){
+        try {
+
+            $peluqueria = Peluqueria::find($id);
+
+            if ($peluqueria->interesa == 0){
+                $peluqueria->interesa = 1;
+            }else{
+                $peluqueria->interesa = 0;
+            }
+
+            $peluqueria->update();
+
+            return json_encode(true);
+
+        }catch (\Exception $e){
+            return json_encode(false);
+        }
+    }
+
     private function dataSave($peluqueria, $request, $action){
 
         $peluqueria->id_municipio = $request->input('municipio');

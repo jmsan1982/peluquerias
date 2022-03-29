@@ -18,6 +18,7 @@ Route::resource('municipios', MunicipiosController::class);
 //peluquerias
 Route::resource('peluquerias', PeluqueriasController::class);
 Route::get('/peluqueria/actualizarUltimaVisita/{id}', [PeluqueriasController::class, 'actualizarUltimaVisita']);
+Route::get('/peluqueria/actualizarInteresa/{id}', [PeluqueriasController::class, 'actualizarInteresa']);
 //firmas
 Route::resource('firmas', FirmasController::class);
 //productos

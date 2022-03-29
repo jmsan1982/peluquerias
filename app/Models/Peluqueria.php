@@ -28,6 +28,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int|null $total_cobrado
  * @property Carbon|null $ultima_visita
  * @property string|null $dia_cierre
+ * @property int $interesa
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * 
@@ -44,7 +45,8 @@ class Peluqueria extends Model
 		'id_municipio' => 'int',
 		'n_visitas' => 'int',
 		'total_vendido' => 'int',
-		'total_cobrado' => 'int'
+		'total_cobrado' => 'int',
+		'interesa' => 'int'
 	];
 
 	protected $dates = [
@@ -65,7 +67,8 @@ class Peluqueria extends Model
 		'total_vendido',
 		'total_cobrado',
 		'ultima_visita',
-		'dia_cierre'
+		'dia_cierre',
+		'interesa'
 	];
 
 	public function municipio()

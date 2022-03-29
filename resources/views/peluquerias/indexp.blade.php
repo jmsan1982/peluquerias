@@ -34,7 +34,7 @@
                                 <th scope="col" class="text-center"><b>Población</b></th>
                             @endif
                             <th scope="col" class="text-center"><b>Ultima Visita</b></th>
-                            <th scope="col" class="text-center"><b>Actualizar Visita</b></th>
+                            <th scope="col" class="text-center"><b>Actualizar Visita / Visivilidad</b></th>
                         </tr>
                         </thead>
                         <tbody>
@@ -55,7 +55,7 @@
                                 </td>
 
                                 <td>
-                                    <a href="{{ route('peluquerias.show', $peluqueria->id) }}">{{$peluqueria->nombre}}</a>
+                                    <a style="{{$peluqueria->interesa != 0 ? 'color:green' : 'color:red' }}" href="{{ route('peluquerias.show', $peluqueria->id) }}">{{$peluqueria->nombre}}</a>
                                 </td>
                                 @if(!isset($all))
                                 <td>{{$peluqueria->direccion}}</td>
@@ -65,7 +65,10 @@
                                     <td>{{$peluqueria->municipio->nombre}}</td>
                                 @endif
                                 <td>{{is_null($peluqueria->ultima_visita) ? '' : \Carbon\Carbon::parse($peluqueria->ultima_visita)->format('d-m-Y')}}</td>
-                                <td><i class="iVisitaPlus fas fa-calendar-plus fa-2x" onclick="actualizarFecha({{$peluqueria->id}})"></i></td>
+                                <td>
+                                    <i class="iVisitaPlus fas fa-calendar-plus fa-2x" style="margin-right: 10px;" onclick="actualizarFecha({{$peluqueria->id}})"></i>
+                                    <i class="visivilidad fas fa-paint-brush fa-2x" onclick="actualizarInteresa({{$peluqueria->id}})"></i>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>
